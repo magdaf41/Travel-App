@@ -1,89 +1,50 @@
-Travel App
+# React + TypeScript + Vite
 
-A React + TypeScript project built with Vite, featuring a travel dashboard with interactive maps, travel statistics, and a trip planning tool using various public APIs.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Features
+Currently, two official plugins are available:
 
-📍 Dashboard – Displays visited and planned destinations on an interactive map.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-📊 Travel Statistics – Tracks steps taken daily and visualizes travel data using charts.
+## Expanding the ESLint configuration
 
-🔍 Trip Planning – Allows searching for destinations based on weather, ski resorts, and museums.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-Tech Stack
+- Configure the top-level `parserOptions` property like this:
 
-Frontend: React, TypeScript, Vite
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-Styling: Tailwind CSS
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-Map: Leaflet.js
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-Charts: Chart.js
-
-API Requests: Axios
-
-Routing: React Router
-
-APIs Used
-
-OpenWeather API – Fetches weather data for trip planning.
-
-Google Places API – Searches for museums, landmarks, and attractions.
-
-Ski Resort API – Finds ski resorts worldwide.
-
-Mapbox API (Alternative to Leaflet) – For rendering maps.
-
-Installation
-
-Clone the repository:
-
-git clone https://github.com/your-username/travel-app.git
-cd travel-app
-
-Install dependencies:
-
-npm install
-
-Create a .env file in the root directory and add your API keys:
-
-VITE_WEATHER_API_KEY=your_openweather_api_key
-VITE_GOOGLE_PLACES_API_KEY=your_google_places_api_key
-
-Start the development server:
-
-npm run dev
-
-Open http://localhost:5173 in your browser.
-
-Project Structure
-
-/src
-  /components
-    - Map.tsx        # Interactive map with visited and planned locations
-    - StatsChart.tsx  # Travel statistics using Chart.js
-    - SearchBar.tsx   # Destination search based on API data
-  /pages
-    - Dashboard.tsx   # Main dashboard with the map
-    - Stats.tsx       # Travel statistics page
-    - Plan.tsx        # Trip planning page
-  /utils
-    - api.ts          # API request helper functions
-  - App.tsx          # Main application component
-  - main.tsx         # Entry point
-
-Screenshots
-
-🚀 Add screenshots of your app here (once it's built)!
-
-Future Improvements
-
-✅ User authentication (Firebase Auth)
-
-✅ Storing user data (MongoDB/Supabase)
-
-✅ Trip recommendations (TripAdvisor API)
-
-✅ More travel-related insights and analytics
-
-
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```
