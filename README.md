@@ -1,50 +1,98 @@
-# React + TypeScript + Vite
+Travel-App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Project Description
 
-Currently, two official plugins are available:
+Travel-App is an application that allows users to track travel statistics, plan new trips, and mark visited and dream destinations on a map. The app provides comprehensive travel insights, such as the number of countries visited, travel frequency, and detailed trip summaries.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Key Features
 
-## Expanding the ESLint configuration
+📊 Travel Statistics
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Ability to mark visited and planned countries on the map.
 
-- Configure the top-level `parserOptions` property like this:
+Number of visited countries along with the travel period.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+Date and location of the last trip.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+Planned date and location of the next trip.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Travel statistics:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+Average number of trips per year.
+
+Number of steps taken during trips.
+
+Popular travel months and average trip duration.
+
+🗺️ Trip Details
+
+List of past trips with dates and descriptions.
+
+Interesting places visited during trips.
+
+Ability to add notes and photos to each trip.
+
+🔍 Trip Planning
+
+Trip search engine allowing users to filter countries based on criteria such as:
+
+Current temperature.
+
+Presence of specific attractions (e.g., museums, landmarks).
+
+Weather conditions.
+
+Integration with maps and tourism-related data.
+
+🛠️ Technologies
+
+The application is built using a modern technology stack:
+
+Vite – fast development environment for React.
+
+React – dynamic user interface.
+
+TypeScript – static typing for increased code reliability.
+
+Tailwind CSS – modern styling system.
+
+Shadcn – pre-built UI components.
+
+📡 External APIs
+
+The application uses several free APIs:
+
+Leaflet + OpenStreetMap – interactive world map for marking trips.
+
+OpenWeatherMap API – real-time weather conditions.
+
+Foursquare Places API – search for tourist attractions.
+
+🔧 Installation & Setup
+
+To run the application locally:
+
+Clone the repository:
+
+git clone https://github.com/your-repo/travel-app.git
+cd travel-app
+
+Install dependencies:
+
+npm install
+
+Run the app in development mode:
+
+npm run dev
+
+Open in your browser: http://localhost:5173/
+
+📌 Production Version
+
+To build the application for deployment:
+
+npm run build
+
+📄 License
+
+This project is available under the MIT License. You can freely modify and use it.
