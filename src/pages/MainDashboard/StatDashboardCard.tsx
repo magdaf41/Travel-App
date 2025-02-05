@@ -1,6 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-export type StatDashboardCardProps = {
+type StatDashboardCardProps = {
 	title: string
 	value: string | number
 	subtitle: string

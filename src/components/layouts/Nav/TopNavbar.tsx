@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import LogInComponent from '../User/LogInComponent'
+import LogInComponent from '../User/LogIn'
 import NavLinks from './NavLinks'
 
 const TopNavbar = () => {

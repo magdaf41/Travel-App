@@ -1,6 +1,5 @@
 import { useLocation } from 'react-router-dom'
 import { useMemo } from 'react'
-
 import NavItem from './NavItem'
 
 const NAV_LINKS = [
@@ -17,7 +16,7 @@ const NavLinks = () => {
 	return (
 		<ul className='flex space-x-6'>
 			{NAV_LINKS.map(({ path, label }) => (
-				<NavItem key={path} to={path} isActive={activePath === path}>
+				<NavItem key={path} path={path} isActive={activePath === path}>
 					{label}
 				</NavItem>
 			))}
