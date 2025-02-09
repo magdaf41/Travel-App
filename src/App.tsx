@@ -8,16 +8,14 @@ import Dashboard from './pages/MainDashboard/Dashboard'
 export default function App() {
 	return (
 		<BrowserRouter>
-			<div className='flex flex-col min-h-screen'>
-				<Routes>
-					<Route element={<Layout />}>
-						<Route path='/' element={<Dashboard />} />
-						<Route path='/stats' element={<Stats />} />
-						<Route path='/trip-tracker' element={<TripTracker />} />
-						<Route path='/new-trip' element={<NewTrip />} />
-					</Route>
-				</Routes>
-			</div>
+			<Routes>
+				<Route element={<Layout />}>
+					<Route path='/' element={<Dashboard />} />
+					<Route path='/stats' element={<Stats />} />
+					<Route path='/trip-tracker' element={<TripTracker />} />
+					<Route path='/new-trip' element={<NewTrip />} />
+				</Route>
+			</Routes>
 		</BrowserRouter>
 	)
 }
