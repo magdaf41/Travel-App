@@ -11,9 +11,13 @@ const Dashboard = () => {
 				<StatDashboardCard title='Last trip' value='Dubai' subtitle='3 weeks ago' />
 				<StatDashboardCard title='Next trip' value='Cypr' subtitle='in 5 weeks' />
 			</div>
-			<div className='grid grid-cols-2 gap-6'>
-				<CountriesList />
-				<WorldMap />
+			<div className='grid grid-cols-4 gap-6 '>
+				<div className='col-span-1 p-4 overflow-auto'>
+					<CountriesList />
+				</div>
+				<div className='col-span-3 p-4'>
+					<WorldMap />
+				</div>
 			</div>
 		</div>
 	)
