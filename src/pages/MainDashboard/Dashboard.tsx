@@ -1,6 +1,6 @@
 import CountriesList from './CountriesList'
+import WorldMap from './MapCard/WorldMap'
 import StatDashboardCard from './StatDashboardCard'
-import WorldMap from './WorldMap'
 
 const Dashboard = () => {
 	return (
