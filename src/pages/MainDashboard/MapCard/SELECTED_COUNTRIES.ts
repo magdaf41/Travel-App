@@ -1,4 +1,4 @@
-export const SELECTED_COUNTRIES = new Set([
+export const SELECTED_COUNTRIES = [
 	'France',
 	'Italy',
 	'Poland',
@@ -7,7 +7,6 @@ export const SELECTED_COUNTRIES = new Set([
 	'Vietnam',
 	'United Arab Emirates',
 	'Turkey',
-	'Japan',
 	'Netherlands',
 	'Czech Republic',
 	'Republic of Serbia',
@@ -15,4 +14,6 @@ export const SELECTED_COUNTRIES = new Set([
 	'Bosnia and Herzegovina',
 	'Belgium',
 	'Lithuania',
-])
+	'Georgia',
+	'Sweden',
+]

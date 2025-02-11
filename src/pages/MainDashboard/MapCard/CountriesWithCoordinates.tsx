@@ -16,7 +16,9 @@ const CountriesWithCoordinates: React.FC = () => {
 		if (data?.features) {
 			setGeoData({
 				type: 'FeatureCollection',
-				features: data.features.filter((feature: CountryFeature) => SELECTED_COUNTRIES.has(feature.properties.ADMIN)),
+				features: data.features.filter((feature: CountryFeature) =>
+					SELECTED_COUNTRIES.includes(feature.properties.ADMIN)
+				),
 			})
 		}
 	}, [data])

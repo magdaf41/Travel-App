@@ -5,7 +5,7 @@ import 'leaflet/dist/leaflet.css'
 import { SELECTED_COUNTRIES } from './SELECTED_COUNTRIES'
 
 const getCountryStyle = (countryName: string) => ({
-	fillColor: SELECTED_COUNTRIES.has(countryName) ? '#3352ff' : '#cccccc',
+	fillColor: SELECTED_COUNTRIES.includes(countryName) ? '#3352ff' : '#cccccc',
 	weight: 1,
 	color: '#cccccc',
 	fillOpacity: 0.7,
