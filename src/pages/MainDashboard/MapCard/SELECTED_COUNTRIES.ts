@@ -1,0 +1,18 @@
+export const SELECTED_COUNTRIES = new Set([
+	'France',
+	'Italy',
+	'Poland',
+	'Germany',
+	'Thailand',
+	'Vietnam',
+	'United Arab Emirates',
+	'Turkey',
+	'Japan',
+	'Netherlands',
+	'Czech Republic',
+	'Republic of Serbia',
+	'Montenegro',
+	'Bosnia and Herzegovina',
+	'Belgium',
+	'Lithuania',
+])
