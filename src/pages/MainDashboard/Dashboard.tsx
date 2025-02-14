@@ -1,6 +1,6 @@
 import CountriesList from './CountriesList'
 import StatDashboardCard from './StatDashboardCard'
-import MapCard from './MapCard'
+import WorldMap from './WorldMap'
 
 const Dashboard = () => {
 	return (
@@ -11,9 +11,9 @@ const Dashboard = () => {
 				<StatDashboardCard title='Last trip' value='Dubai' subtitle='3 weeks ago' />
 				<StatDashboardCard title='Next trip' value='Cypr' subtitle='in 5 weeks' />
 			</div>
-			<div className='grid grid-cols-4 gap-6'>
+			<div className='grid grid-cols-2 gap-6'>
 				<CountriesList />
-				<MapCard />
+				<WorldMap />
 			</div>
 		</div>
 	)
