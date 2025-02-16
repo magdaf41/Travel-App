@@ -1,20 +1,20 @@
 import clsx from 'clsx'
 import { Link } from 'react-router-dom'
 
-export type NavItemProps = {
+export type Props = {
 	path: string
 	children: string
 	isActive: boolean
 }
 
-const NavItem = ({ path, children, isActive }: NavItemProps) => {
-	const classNameLink = clsx(
-		'px-4 py-2 rounded-lg transition duration-300 ease-in-out',
-		isActive ? 'bg-gray-800 text-white' : 'hover:bg-gray-200'
-	)
+const NavItem = ({ path, children, isActive }: Props) => {
+	const linkClasses = clsx('text-sm font-medium', {
+		'text-blue-500': isActive,
+		'text-gray-500': !isActive,
+	})
 	return (
 		<li>
-			<Link className={classNameLink} to={path}>
+			<Link className={linkClasses} to={path}>
 				{children}
 			</Link>
 		</li>

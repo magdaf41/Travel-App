@@ -1,12 +1,12 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
-type StatDashboardCardProps = {
+type Props = {
 	title: string
 	value: string | number
 	subtitle: string
 }
 
-const StatDashboardCard = ({ title, value, subtitle }: StatDashboardCardProps) => (
+const StatDashboardCard = ({ title, value, subtitle }: Props) => (
 	<Card>
 		<CardHeader className='flex flex-row items-center justify-between space-y-0 pb-2'>
 			<CardTitle className='text-sm font-medium'>{title}</CardTitle>
