@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import 'leaflet/dist/leaflet.css'
-import { useGetCountriesWithCoordinatesQuery } from '@/api/base.api'
+import { useGetCountriesWithCoordinatesQuery } from '@/api/countriesWithCoordinatesApi.api'
 import { CountryFeature, GeoJSONData } from '@/types/GeoJSON'
 
 import LoadingIndicator from '@/components/loader/LoadingIndicator'
@@ -18,7 +18,9 @@ const CountriesWithCoordinates = () => {
 		}
 		setGeoData({
 			type: 'FeatureCollection',
-			features: data.features.filter((feature: CountryFeature) => SELECTED_COUNTRIES.includes(feature.properties.ADMIN)),
+			features: data.features.filter((feature: CountryFeature) =>
+				SELECTED_COUNTRIES.includes(feature.properties.ADMIN)
+			),
 		})
 	}, [data])
 

@@ -1,13 +1,33 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
 
-export const countriesWithCoordinatesApi = createApi({
-	reducerPath: 'countriesApi',
-	baseQuery: fetchBaseQuery({ baseUrl: '' }),
-	endpoints: builder => ({
-		getCountriesWithCoordinates: builder.query<any, void>({
-			query: () => 'https://r2.datahub.io/clvyjaryy0000la0cxieg4o8o/main/raw/data/countries.geojson',
-		}),
-	}),
+const staggeredBaseQueryWithBailOut = retry(
+	async (args, api, extraOptions) => {
+		const baseUrl = args?.meta?.baseUrl
+
+		const result = await fetchBaseQuery({
+			baseUrl,
+			async prepareHeaders(headers) {
+				// const token = await getTokens()
+				// if (token) headers.set('authorization', `Bearer ${token}`)
+				return headers
+			},
+		})(args, api, extraOptions)
+
+		if (result.error) {
+			// api.dispatch(openSnackbar('Something went wrong', 'error'))
+		}
+
+		return {
+			...result,
+			meta: result.meta && { ...result.meta, timestamp: Date.now() },
+		}
+	},
+	{ maxRetries: 0 }
+)
+
+export const baseApi = createApi({
+	reducerPath: 'api',
+	baseQuery: staggeredBaseQueryWithBailOut,
+	endpoints: () => ({}),
+	keepUnusedDataFor: 10,
 })
-
-export const { useGetCountriesWithCoordinatesQuery } = countriesWithCoordinatesApi
