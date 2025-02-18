@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import 'leaflet/dist/leaflet.css'
 import { useGetCountriesWithCoordinatesQuery } from '@/api/base.api'
 import { CountryFeature, GeoJSONData } from '@/types/GeoJSON'
@@ -8,19 +8,18 @@ import { SELECTED_COUNTRIES } from './SELECTED_COUNTRIES'
 import ErrorMessage from '@/components/errors/CountriesDataErrorMessage'
 import SelectedCountries from './SelectedCountries'
 
-const CountriesWithCoordinates: React.FC = () => {
+const CountriesWithCoordinates = () => {
 	const { data, error, isLoading } = useGetCountriesWithCoordinatesQuery()
 	const [geoData, setGeoData] = useState<GeoJSONData | null>(null)
 
 	useEffect(() => {
-		if (data?.features) {
-			setGeoData({
-				type: 'FeatureCollection',
-				features: data.features.filter((feature: CountryFeature) =>
-					SELECTED_COUNTRIES.includes(feature.properties.ADMIN)
-				),
-			})
+		if (!data?.features) {
+			return
 		}
+		setGeoData({
+			type: 'FeatureCollection',
+			features: data.features.filter((feature: CountryFeature) => SELECTED_COUNTRIES.has(feature.properties.ADMIN)),
+		})
 	}, [data])
 
 	if (isLoading) return <LoadingIndicator />
