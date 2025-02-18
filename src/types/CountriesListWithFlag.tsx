@@ -1,4 +1,4 @@
-export interface Country {
+export interface CountryWithFlagType {
 	name: {
 		common: string
 		official: string
@@ -11,6 +11,7 @@ export interface Country {
 	}
 	cca3: string
 	capital?: string[]
+	continents?: string[]
 	currencies?: {
 		[key: string]: {
 			name: string

@@ -1,6 +1,6 @@
 import { CountriesDataTypes } from '@/types/CountriesData'
 
-const CountriesCard = ({ country, continent, flag, alt }: CountriesDataTypes) => {
+const CountriesCard = ({ country, flag, alt }: CountriesDataTypes) => {
 	return (
 		<div className='  flex flex-wrap justify-between gap-3 '>
 			<section className='flex justify-between gap-3 '>
