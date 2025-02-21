@@ -1,5 +1,13 @@
+import { Timestamp } from 'firebase/firestore'
+
 export type CountriesDataTypes = {
-	country: string
+	id: string
+	capitol: string
+	continent: string
 	flag: string
-	alt: string
+	howManyTimesVisited: number
+	name: string
+	purpose: string
+	tripFinishedAt: Timestamp
+	tripStartedAt: Timestamp
 }

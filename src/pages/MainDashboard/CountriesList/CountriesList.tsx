@@ -6,8 +6,9 @@ import ErrorMessage from '@/components/errors/CountriesDataErrorMessage'
 import { CountryWithFlagType } from '@/types/CountriesListWithFlag'
 import CountriesListHeader from './CountriesListHeader'
 import CountriesGroup from './CountriesGroup'
+import { CountriesDataTypes } from '@/types/CountriesData'
 
-const CountriesList = () => {
+const CountriesList = ({ countries }: { countries: CountriesDataTypes[] }) => {
 	const { data, error, isLoading } = useGetCountriesWithFlagQuery()
 
 	if (isLoading) return <LoadingIndicator />
@@ -15,9 +16,11 @@ const CountriesList = () => {
 
 	const filteredCountries = data?.filter(({ name }: CountryWithFlagType) => SELECTED_COUNTRIES.includes(name.common))
 
-	const groupedCountries = filteredCountries?.reduce(
-		(acc: Record<string, CountryWithFlagType[]>, country: CountryWithFlagType) => {
-			const continent = country.continents?.[0] || 'Unknown continent'
+	console.log(filteredCountries)
+
+	const groupedCountries = countries?.reduce(
+		(acc: Record<string, CountriesDataTypes[]>, country: CountriesDataTypes) => {
+			const continent = country.continent || 'Unknown continent'
 			acc[continent] = acc[continent] || []
 			acc[continent].push(country)
 			return acc
@@ -27,7 +30,8 @@ const CountriesList = () => {
 
 	return (
 		<CustomCardContent>
-			<CountriesListHeader />
+			<CountriesListHeader numberOfCountries={countries.length} />
+
 			{groupedCountries &&
 				Object.entries(groupedCountries).map(([continent, countries]) => (
 					// Jak mam rozwiązać problem z tym typem countries bo TS podkreśla mi to i mówi że może być unknown

@@ -1,3 +1,5 @@
+import FetchDataFromFirebase from '../Firebase/FetchDataFromFirebase'
+import Test from '../Firebase/FetchDataFromFirebase'
 import CountriesList from './CountriesList/CountriesList'
 import { SELECTED_COUNTRIES } from './MapCard/SELECTED_COUNTRIES'
 import WorldMap from './MapCard/WorldMap'
@@ -14,7 +16,7 @@ const Dashboard = () => {
 			</div>
 			<div className='grid grid-cols-4 gap-6 '>
 				<div className='col-span-1 p-4 h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200'>
-					<CountriesList />
+					<FetchDataFromFirebase />
 				</div>
 				<div className='col-span-3 p-4'>
 					<WorldMap />
