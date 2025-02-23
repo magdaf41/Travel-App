@@ -2,19 +2,26 @@ import { GeoJSONData } from '@/types/GeoJSON'
 
 import { GeoJSON } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
-import { SELECTED_COUNTRIES } from './SELECTED_COUNTRIES'
+import { useMemo } from 'react'
 
-const getCountryStyle = (countryName: string) => ({
-	fillColor: SELECTED_COUNTRIES.includes(countryName) ? '#3352ff' : '#cccccc',
+const getCountryStyle = (countryName: string, countriesName: string[]) => ({
+	fillColor: countriesName.includes(countryName) ? '#3352ff' : '#3352ff',
 	weight: 1,
-	color: '#cccccc',
+	color: '#3352ff',
 	fillOpacity: 0.7,
 })
 
-const SelectedCountries: React.FC<{ geoData: GeoJSONData | null }> = ({ geoData }) => {
+const SelectedCountries: React.FC<{ geoData: GeoJSONData | null; countriesName: string[] }> = ({
+	geoData,
+	countriesName,
+}) => {
+	const styleFunction = useMemo(
+		() => feature => getCountryStyle(feature?.properties?.ADMIN, countriesName),
+		[countriesName]
+	)
 	if (!geoData) return <p className='text-center'>No data available</p>
-
-	return <GeoJSON data={geoData} style={feature => getCountryStyle(feature?.properties?.ADMIN)} />
+	// dodalam key żeby wymusić renderowanie, bo bez tego nie zaznaczało mi się odpowiednio odwiedzonych miejsc
+	return <GeoJSON key={countriesName.join(',')} data={geoData} style={styleFunction} />
 }
 
 export default SelectedCountries
