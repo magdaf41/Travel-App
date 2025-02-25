@@ -1,21 +1,19 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import Layout from './components/layouts/Layout'
-import Stats from './pages/Stats'
-import NewTrip from './pages/NewTrip'
-import TripTracker from './pages/TravelLog'
-import Dashboard from './pages/MainDashboard/Dashboard'
+import ROUTES from './routes/routes'
 
 export default function App() {
 	return (
 		<BrowserRouter>
-			<Routes>
-				<Route element={<Layout />}>
-					<Route path='/' element={<Dashboard />} />
-					<Route path='/stats' element={<Stats />} />
-					<Route path='/trip-tracker' element={<TripTracker />} />
-					<Route path='/new-trip' element={<NewTrip />} />
-				</Route>
-			</Routes>
+			<div className='flex flex-col min-h-screen'>
+				<Routes>
+					<Route element={<Layout />}>
+						{ROUTES.map(({ path, element, label }) => (
+							<Route key={label} path={path} element={element} />
+						))}
+					</Route>
+				</Routes>
+			</div>
 		</BrowserRouter>
 	)
 }
