@@ -1,7 +1,7 @@
 import clsx from 'clsx'
 import { Link } from 'react-router-dom'
 
-export type Props = {
+type Props = {
 	path: string
 	children: string
 	isActive: boolean
