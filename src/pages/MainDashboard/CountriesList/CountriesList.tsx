@@ -30,7 +30,6 @@ const CountriesList = () => {
 			<CountriesListHeader />
 			{groupedCountries &&
 				Object.entries(groupedCountries).map(([continent, countries]) => (
-					// Jak mam rozwiązać problem z tym typem countries bo TS podkreśla mi to i mówi że może być unknown
 					<CountriesGroup key={continent} continent={continent} countries={countries} />
 				))}
 		</CustomCardContent>

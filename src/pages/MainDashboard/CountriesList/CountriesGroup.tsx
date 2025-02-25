@@ -1,7 +1,12 @@
 import CountriesCard from '@/components/CountriesCard'
 import { CountryWithFlagType } from '@/types/CountriesListWithFlag'
 
-const CountriesGroup = ({ continent, countries }: { continent: string; countries: CountryWithFlagType[] }) => (
+type Props = {
+	continent: string
+	countries: CountryWithFlagType[]
+}
+
+const CountriesGroup = ({ continent, countries }: Props) => (
 	<div key={continent} className='mb-6'>
 		<h3 className='text-lg font-semibold'>
 			{continent} ({countries.length})

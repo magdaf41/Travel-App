@@ -7,14 +7,12 @@ const staggeredBaseQueryWithBailOut = retry(
 		const result = await fetchBaseQuery({
 			baseUrl,
 			async prepareHeaders(headers) {
-				// const token = await getTokens()
-				// if (token) headers.set('authorization', `Bearer ${token}`)
 				return headers
 			},
 		})(args, api, extraOptions)
 
 		if (result.error) {
-			// api.dispatch(openSnackbar('Something went wrong', 'error'))
+			console.log('Something went wrong', 'error')
 		}
 
 		return {
