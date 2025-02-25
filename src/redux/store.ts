@@ -1,12 +1,13 @@
-import { countriesWithCoordinatesApi } from '@/api/base.api'
+import { baseApi } from '@/api/base.api'
+
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
 export const store = configureStore({
 	reducer: {
-		[countriesWithCoordinatesApi.reducerPath]: countriesWithCoordinatesApi.reducer,
+		[baseApi.reducerPath]: baseApi.reducer,
 	},
-	middleware: getDefaultMiddleware => getDefaultMiddleware().concat(countriesWithCoordinatesApi.middleware),
+	middleware: getDefaultMiddleware => getDefaultMiddleware().concat(baseApi.middleware),
 })
 
 setupListeners(store.dispatch)

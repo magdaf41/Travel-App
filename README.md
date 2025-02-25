@@ -1,98 +1,91 @@
-Travel-App
+# 🌍 Travel-App
 
-Project Description
+## 📌 Project Description
 
-Travel-App is an application that allows users to track travel statistics, plan new trips, and mark visited and dream destinations on a map. The app provides comprehensive travel insights, such as the number of countries visited, travel frequency, and detailed trip summaries.
+**Travel-App** is an application that allows users to track travel statistics, plan new trips, and mark visited and dream destinations on a map. It provides comprehensive travel insights, including the number of countries visited, travel frequency, and detailed trip summaries.
 
-Key Features
+## ✨ Key Features
 
-📊 Travel Statistics
+### 📊 Travel Statistics
 
-Ability to mark visited and planned countries on the map.
+- Mark visited and planned countries on an interactive map.
+- Track the number of visited countries along with the travel period.
+- View the date and location of the last trip.
+- Check the planned date and location of the next trip.
+- Detailed travel statistics:
+  - Average number of trips per year.
+  - Number of steps taken during trips.
+  - Popular travel months and average trip duration.
 
-Number of visited countries along with the travel period.
+### 🗺️ Trip Details
 
-Date and location of the last trip.
+- List of past trips with dates and descriptions.
+- Record interesting places visited during trips.
+- Add notes and photos to each trip.
 
-Planned date and location of the next trip.
+### 🔍 Trip Planning
 
-Travel statistics:
+- Search for trips based on various filters:
+  - Current temperature.
+  - Presence of specific attractions (e.g., museums, landmarks).
+  - Weather conditions.
+- Integration with maps and tourism-related data.
 
-Average number of trips per year.
-
-Number of steps taken during trips.
-
-Popular travel months and average trip duration.
-
-🗺️ Trip Details
-
-List of past trips with dates and descriptions.
-
-Interesting places visited during trips.
-
-Ability to add notes and photos to each trip.
-
-🔍 Trip Planning
-
-Trip search engine allowing users to filter countries based on criteria such as:
-
-Current temperature.
-
-Presence of specific attractions (e.g., museums, landmarks).
-
-Weather conditions.
-
-Integration with maps and tourism-related data.
-
-🛠️ Technologies
+## 🛠️ Technologies Used
 
 The application is built using a modern technology stack:
 
-Vite – fast development environment for React.
+- **Vite** – fast development environment for React.
+- **React** – dynamic user interface.
+- **TypeScript** – static typing for increased code reliability.
+- **Tailwind CSS** – modern styling system.
+- **Shadcn** – pre-built UI components.
 
-React – dynamic user interface.
+## 📡 External APIs
 
-TypeScript – static typing for increased code reliability.
+The application integrates with several free APIs:
 
-Tailwind CSS – modern styling system.
+- **Leaflet + OpenStreetMap** – interactive world map for marking trips.
+- **OpenWeatherMap API** – real-time weather conditions.
+- **Foursquare Places API** – search for tourist attractions.
 
-Shadcn – pre-built UI components.
+## 🚀 Installation & Setup
 
-📡 External APIs
-
-The application uses several free APIs:
-
-Leaflet + OpenStreetMap – interactive world map for marking trips.
-
-OpenWeatherMap API – real-time weather conditions.
-
-Foursquare Places API – search for tourist attractions.
-
-🔧 Installation & Setup
-
-To run the application locally:
+### 🔧 Run the application locally:
 
 Clone the repository:
 
+```sh
 git clone https://github.com/your-repo/travel-app.git
 cd travel-app
+```
 
 Install dependencies:
 
+```sh
 npm install
+```
 
 Run the app in development mode:
 
+```sh
 npm run dev
+```
 
-Open in your browser: http://localhost:5173/
+Open in your browser: [http://localhost:5173/](http://localhost:5173/)
 
-📌 Production Version
+### 📌 Production Version
 
 To build the application for deployment:
 
+```sh
 npm run build
+```
 
-📄 License
+## 📄 License
 
-This project is available under the MIT License. You can freely modify and use it.
+This project is available under the **MIT License**. You can freely modify and use it.
+
+---
+
+💡 **Happy traveling and happy coding!** ✈️🌎
