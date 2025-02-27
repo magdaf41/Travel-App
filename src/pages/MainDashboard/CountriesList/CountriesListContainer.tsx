@@ -1,15 +1,11 @@
-import LoadingIndicator from '@/components/loader/LoadingIndicator'
-import ErrorMessage from '@/components/errors/CountriesDataErrorMessage'
+import { useFirebaseCountries } from '@/hooks/useFirebaseCountries'
 import CountriesList from './CountriesList'
-import useCountriesFetcher from '@/hooks/useCountriesFetcher'
 
 const CountriesListContainer = () => {
-	const { countryList, isLoading, error } = useCountriesFetcher()
+	const { content, data: visitedCountries } = useFirebaseCountries()
 
-	if (isLoading) return <LoadingIndicator />
-	if (error) return <ErrorMessage error={error} />
-
-	return <CountriesList countries={countryList} />
+	if (content) return content
+	return <CountriesList countries={visitedCountries} />
 }
 
 export default CountriesListContainer

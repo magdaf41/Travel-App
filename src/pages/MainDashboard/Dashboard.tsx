@@ -1,16 +1,18 @@
-import useCountriesFetcher from '@/hooks/useCountriesFetcher'
 import CountriesListContainer from './CountriesList/CountriesListContainer'
 import WorldMap from './MapCard/WorldMap'
 import StatDashboardCard from './StatDashboardCard'
 import { Card } from '@/components/ui/card'
+import { useFirebaseCountries } from '@/hooks/useFirebaseCountries'
 
 const Dashboard = () => {
-	const { countryList } = useCountriesFetcher()
+	const { content, data: visitedCountries } = useFirebaseCountries()
+
+	if (content) return content
 	return (
 		<div className='p-4 space-y-4'>
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
 				<StatDashboardCard title='Done Trip' value='24' subtitle='since 2020' />
-				<StatDashboardCard title='Countries visited' value={countryList.length} subtitle='5 last year' />
+				<StatDashboardCard title='Countries visited' value={visitedCountries.length} subtitle='5 last year' />
 				<StatDashboardCard title='Last trip' value='Dubai' subtitle='3 weeks ago' />
 				<StatDashboardCard title='Next trip' value='Cypr' subtitle='in 5 weeks' />
 			</div>

@@ -1,5 +1,3 @@
-import { Timestamp } from 'firebase/firestore'
-
 export type CountriesDataTypes = {
 	id: string
 	capitol: string
@@ -8,6 +6,6 @@ export type CountriesDataTypes = {
 	howManyTimesVisited: number
 	name: string
 	purpose: string
-	tripFinishedAt: Timestamp
-	tripStartedAt: Timestamp
+	tripFinishedAt: number
+	tripStartedAt: number
 }
