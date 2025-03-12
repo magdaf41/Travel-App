@@ -2,7 +2,7 @@ import { createApi, fetchBaseQuery, retry } from '@reduxjs/toolkit/query/react'
 
 const staggeredBaseQueryWithBailOut = retry(
 	async (args, api, extraOptions) => {
-		const baseUrl = args?.meta?.baseUrl || 'https://default-api-url.com' // domyślny baseUrl
+		const baseUrl = args?.meta?.baseUrl
 
 		const result = await fetchBaseQuery({
 			baseUrl,

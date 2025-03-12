@@ -1,4 +1,4 @@
-export type CountriesDataTypes = {
+export type CountriesData = {
 	id: string
 	capitol: string
 	continent: string

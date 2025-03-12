@@ -1,4 +1,4 @@
-export interface CountryWithFlagType {
+export interface CountryWithFlag {
 	name: {
 		common: string
 		official: string

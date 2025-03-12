@@ -4,6 +4,17 @@ import { GeoJSON } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
 import { useMemo } from 'react'
 
+import { Feature, MultiPolygon } from 'geojson'
+
+type CountryFeature = Feature<
+	MultiPolygon,
+	{
+		ADMIN: string
+		ISO_A3: string
+		ISO_A2: string
+	}
+>
+
 const getCountryStyle = (countryName: string, countriesName: string[]) => ({
 	fillColor: countriesName.includes(countryName) ? '#3352ff' : '#3352ff',
 	weight: 1,
@@ -16,11 +27,14 @@ const SelectedCountries: React.FC<{ geoData: GeoJSONData | null; countriesName: 
 	countriesName,
 }) => {
 	const styleFunction = useMemo(
-		() => feature => getCountryStyle(feature?.properties?.ADMIN, countriesName),
+		// nie umiem określić typu feature, bo jak określę w taki sposób to styleFunction powoduje błąd
+		() => (feature: CountryFeature) => {
+			console.log(feature)
+			return getCountryStyle(feature?.properties?.ADMIN as string, countriesName)
+		},
 		[countriesName]
 	)
 	if (!geoData) return <p className='text-center'>No data available</p>
-	// dodalam key żeby wymusić renderowanie, bo bez tego nie zaznaczało mi się odpowiednio odwiedzonych miejsc
 	return <GeoJSON key={countriesName.join(',')} data={geoData} style={styleFunction} />
 }
 

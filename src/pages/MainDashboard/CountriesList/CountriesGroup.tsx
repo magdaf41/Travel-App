@@ -1,9 +1,9 @@
 import CountriesCard from '@/components/CountriesCard'
-import { CountriesDataTypes } from '@/types/CountriesData'
+import { CountriesData } from '@/types/CountriesData'
 
 type Props = {
 	continent: string
-	countries: CountriesDataTypes[]
+	countries: CountriesData[]
 }
 
 const CountriesGroup = ({ continent, countries }: Props) => (

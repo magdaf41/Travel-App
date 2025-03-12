@@ -1,10 +1,12 @@
-import { baseApi } from './base.api'
 import { getDocs, collection, Timestamp } from 'firebase/firestore'
 import { db } from '@/config/firebase'
 import { CountriesDataTypes } from '@/types/CountriesData'
-import { FetchBaseQueryError } from '@reduxjs/toolkit/query'
+import { fakeBaseQuery, FetchBaseQueryError } from '@reduxjs/toolkit/query'
+import { createApi } from '@reduxjs/toolkit/query/react'
 
-export const firebaseApi = baseApi.injectEndpoints({
+export const firebaseApi = createApi({
+	reducerPath: 'posts',
+	baseQuery: fakeBaseQuery(),
 	endpoints: builder => ({
 		getFirebaseApi: builder.query<CountriesDataTypes[], void>({
 			async queryFn() {
@@ -19,9 +21,7 @@ export const firebaseApi = baseApi.injectEndpoints({
 							...data,
 							id: doc.id,
 							tripFinishedAt:
-								data.tripFinishedAt instanceof Timestamp
-									? data.tripFinishedAt.toMillis() 
-									: data.tripFinishedAt,
+								data.tripFinishedAt instanceof Timestamp ? data.tripFinishedAt.toMillis() : data.tripFinishedAt,
 							tripStartedAt:
 								data.tripStartedAt instanceof Timestamp ? data.tripStartedAt.toMillis() : data.tripStartedAt,
 						} as CountriesDataTypes

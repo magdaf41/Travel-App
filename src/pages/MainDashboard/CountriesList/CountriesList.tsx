@@ -1,17 +1,14 @@
 import CountriesListHeader from './CountriesListHeader'
 import CountriesGroup from './CountriesGroup'
-import { CountriesDataTypes } from '@/types/CountriesData'
+import { CountriesData } from '@/types/CountriesData'
 
-const CountriesList = ({ countries }: { countries: CountriesDataTypes[] }) => {
-	const groupedCountries = countries?.reduce(
-		(acc: Record<string, CountriesDataTypes[]>, country: CountriesDataTypes) => {
-			const continent = country.continent || 'Unknown continent'
-			acc[continent] = acc[continent] || []
-			acc[continent].push(country)
-			return acc
-		},
-		{}
-	)
+const CountriesList = ({ countries }: { countries: CountriesData[] }) => {
+	const groupedCountries = countries?.reduce((acc: Record<string, CountriesData[]>, country: CountriesData) => {
+		const continent = country.continent || 'Unknown continent'
+		acc[continent] = acc[continent] || []
+		acc[continent].push(country)
+		return acc
+	}, {})
 
 	return (
 		<div>
