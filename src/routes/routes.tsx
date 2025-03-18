@@ -1,5 +1,5 @@
 import Dashboard from '@/pages/MainDashboard/Dashboard'
-import NewTrip from '@/pages/NewTrip'
+import NewTrip from '@/pages/NewTrip/NewTrip'
 import Stats from '@/pages/Stats'
 import TripTracker from '@/pages/TravelLog'
 

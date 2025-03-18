@@ -15,6 +15,7 @@ const CountriesWithCoordinates = () => {
 	const { content, data: visitedCountries } = useFirebaseCountries()
 	const [visitedCountriesNames, setVisitedCountriesNames] = useState<string[]>([])
 
+	console.log(data)
 	if (content) return content
 	useEffect(() => {
 		if (!data?.features || !visitedCountries) return

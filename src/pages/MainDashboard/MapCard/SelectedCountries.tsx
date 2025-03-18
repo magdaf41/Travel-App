@@ -27,9 +27,9 @@ const SelectedCountries: React.FC<{ geoData: GeoJSONData | null; countriesName: 
 	countriesName,
 }) => {
 	const styleFunction = useMemo(
-		// nie umiem określić typu feature, bo jak określę w taki sposób to styleFunction powoduje błąd
 		() => (feature: CountryFeature) => {
-			console.log(feature)
+			if (!feature) return {}
+
 			return getCountryStyle(feature?.properties?.ADMIN as string, countriesName)
 		},
 		[countriesName]
