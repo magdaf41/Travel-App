@@ -1,14 +1,17 @@
-import { CountriesDataTypes } from '@/types/CountriesData'
+export type Props = {
+	name: string
+	flag: string
+}
 
-const CountriesCard = ({ country, flag, alt }: CountriesDataTypes) => {
+const CountriesCard = ({ name, flag }: Props) => {
 	return (
 		<div className='  flex flex-wrap justify-between gap-3 '>
 			<section className='flex justify-between gap-3 '>
 				<div className=' h-12 w-12 p-1'>
-					<img width={200} height={200} src={flag} alt={alt} />
+					<img width={200} height={200} src={flag} alt={`Flag ${name}`} />
 				</div>
 				<div className='text-sm'>
-					<p>{country}</p>
+					<p>{name}</p>
 				</div>
 			</section>
 		</div>

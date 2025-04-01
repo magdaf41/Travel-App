@@ -6,21 +6,18 @@ const staggeredBaseQueryWithBailOut = retry(
 
 		const result = await fetchBaseQuery({
 			baseUrl,
-			async prepareHeaders(headers) {
-				return headers
-			},
 		})(args, api, extraOptions)
 
 		if (result.error) {
-			console.log('Something went wrong', 'error')
+			console.error('Api error')
 		}
 
 		return {
 			...result,
-			meta: result.meta && { ...result.meta, timestamp: Date.now() },
+			meta: result.meta ? { ...result.meta, timestamp: Date.now() } : undefined,
 		}
 	},
-	{ maxRetries: 0 }
+	{ maxRetries: 1 }
 )
 
 export const baseApi = createApi({

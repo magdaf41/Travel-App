@@ -1,24 +1,29 @@
-import CountriesList from './CountriesList/CountriesList'
-import { SELECTED_COUNTRIES } from './MapCard/SELECTED_COUNTRIES'
+import CountriesListContainer from './CountriesList/CountriesListContainer'
 import WorldMap from './MapCard/WorldMap'
 import StatDashboardCard from './StatDashboardCard'
+import { Card } from '@/components/ui/card'
+import { useFirebaseCountries } from '@/hooks/useFirebaseCountries'
 
 const Dashboard = () => {
+	const { content, data: visitedCountries } = useFirebaseCountries()
+
+	if (content) return content
 	return (
-		<div className='p-6 space-y-6'>
+		<div className='p-4 space-y-4'>
 			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
 				<StatDashboardCard title='Done Trip' value='24' subtitle='since 2020' />
-				<StatDashboardCard title='Countries visited' value={SELECTED_COUNTRIES.length} subtitle='5 last year' />
+				<StatDashboardCard title='Countries visited' value={visitedCountries.length} subtitle='5 last year' />
 				<StatDashboardCard title='Last trip' value='Dubai' subtitle='3 weeks ago' />
 				<StatDashboardCard title='Next trip' value='Cypr' subtitle='in 5 weeks' />
 			</div>
-			<div className='grid grid-cols-4 gap-6 '>
-				<div className='col-span-1 p-4 h-[500px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-gray-200'>
-					<CountriesList />
-				</div>
-				<div className='col-span-3 p-4'>
+
+			<div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-4'>
+				<Card className='p-4 col-span-1'>
+					<CountriesListContainer />
+				</Card>
+				<Card className='p-4 col-span-3'>
 					<WorldMap />
-				</div>
+				</Card>
 			</div>
 		</div>
 	)

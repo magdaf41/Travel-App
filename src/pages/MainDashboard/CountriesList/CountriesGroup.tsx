@@ -1,9 +1,9 @@
 import CountriesCard from '@/components/CountriesCard'
-import { CountryWithFlagType } from '@/types/CountriesListWithFlag'
+import { CountriesData } from '@/types/CountriesData'
 
 type Props = {
 	continent: string
-	countries: CountryWithFlagType[]
+	countries: CountriesData[]
 }
 
 const CountriesGroup = ({ continent, countries }: Props) => (
@@ -12,13 +12,8 @@ const CountriesGroup = ({ continent, countries }: Props) => (
 			{continent} ({countries.length})
 		</h3>
 		<div className='flex flex-wrap gap-4'>
-			{countries.map(({ name, flags }) => (
-				<CountriesCard
-					key={name.common}
-					flag={flags?.svg || 'unknown flag'}
-					alt={`Flaga ${name.common}`}
-					country={name.common}
-				/>
+			{countries.map(({ id, name, flag }) => (
+				<CountriesCard key={id} name={name} flag={flag} />
 			))}
 		</div>
 	</div>

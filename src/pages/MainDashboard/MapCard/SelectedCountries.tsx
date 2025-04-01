@@ -2,19 +2,40 @@ import { GeoJSONData } from '@/types/GeoJSON'
 
 import { GeoJSON } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css'
-import { SELECTED_COUNTRIES } from './SELECTED_COUNTRIES'
+import { useMemo } from 'react'
 
-const getCountryStyle = (countryName: string) => ({
-	fillColor: SELECTED_COUNTRIES.includes(countryName) ? '#3352ff' : '#cccccc',
+import { Feature, MultiPolygon } from 'geojson'
+
+type CountryFeature = Feature<
+	MultiPolygon,
+	{
+		ADMIN: string
+		ISO_A3: string
+		ISO_A2: string
+	}
+>
+
+const getCountryStyle = (countryName: string, countriesName: string[]) => ({
+	fillColor: countriesName.includes(countryName) ? '#3352ff' : '#3352ff',
 	weight: 1,
-	color: '#cccccc',
+	color: '#3352ff',
 	fillOpacity: 0.7,
 })
 
-const SelectedCountries: React.FC<{ geoData: GeoJSONData | null }> = ({ geoData }) => {
+const SelectedCountries: React.FC<{ geoData: GeoJSONData | null; countriesName: string[] }> = ({
+	geoData,
+	countriesName,
+}) => {
+	const styleFunction = useMemo(
+		// nie umiem określić typu feature, bo jak określę w taki sposób to styleFunction powoduje błąd
+		() => (feature: CountryFeature) => {
+			console.log(feature)
+			return getCountryStyle(feature?.properties?.ADMIN as string, countriesName)
+		},
+		[countriesName]
+	)
 	if (!geoData) return <p className='text-center'>No data available</p>
-
-	return <GeoJSON data={geoData} style={feature => getCountryStyle(feature?.properties?.ADMIN)} />
+	return <GeoJSON key={countriesName.join(',')} data={geoData} style={styleFunction} />
 }
 
 export default SelectedCountries
