@@ -9,7 +9,7 @@ const staggeredBaseQueryWithBailOut = retry(
 		})(args, api, extraOptions)
 
 		if (result.error) {
-			console.error("Api error")
+			console.error('Api error')
 		}
 
 		return {
